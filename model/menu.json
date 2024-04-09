@@ -35,6 +35,18 @@
       "title": "Cortado",
       "desc": "Bryggd på månadens bönor.",
       "price": 39
+    },
+    {
+      "id": 7,
+      "title": "Gustav Adolfsbakelse",
+      "desc": "En kunglig bakelse",
+      "price": 39
+    },
+    {
+      "id": 8,
+      "title": "Semla",
+      "desc": "En festlagsbulle i sin rätta form",
+      "price": 50
     }
   ]
 }
