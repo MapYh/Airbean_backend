@@ -16,9 +16,7 @@ const PORT = 8000;
 const URL = "127.0.0.1";
 
 /*--------------GET--------------- */
-app.get("/", (req, res) => {
-  res.sendFile("./page.html", { root: __dirname });
-});
+app.get("/", (req, res) => {});
 
 app.get("/user/product", (req, res) => {});
 
