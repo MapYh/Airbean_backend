@@ -24,6 +24,7 @@ app.get("/beans", async (req, res) => {
   try {
     
     const beans = await beansMenu.find({});
+    //Vet ej hur han vill att vi hämtar datan. Alltingen så eller så bytes "menuData" ut mot "beans" 
     res.status(201).json(menuData);
     
   } catch (error) {
