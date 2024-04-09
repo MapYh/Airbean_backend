@@ -11,9 +11,13 @@ app.use(express.json());
 
 const PORT = 8000;
 const URL = "127.0.0.1";
-
-const beansMenu = new Datastore({filename: "./model/menu.db", autoload: true});
 const menuData = require("./model/menu.json");
+
+
+//init en ny databas
+const beansMenu = new Datastore({filename: "./model/menu.db", autoload: true});
+
+
 /*--------------GET--------------- */
 app.get("/", (req, res) => {
   res.status(200).json({message: "testing"});
