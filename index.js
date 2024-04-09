@@ -1,22 +1,35 @@
-import express from "express";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+const express = require("express");
+const Datastore = require("nedb-promise")
+
 
 //Init app
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 /*--------------Middleware--------------- */
 app.use(express.json());
-app.use(express.static(__dirname));
 
 /*--------------Variables--------------- */
 
 const PORT = 8000;
 const URL = "127.0.0.1";
 
+const beansMenu = new Datastore({filename: "./model/menu.db", autoload: true});
+const menuData = require("./model/menu.json");
 /*--------------GET--------------- */
-app.get("/", (req, res) => {});
+app.get("/", (req, res) => {
+  res.status(200).json({message: "testing"});
+});
+
+app.get("/beans", async (req, res) => {
+  
+  try {
+    
+    const beans = await beansMenu.find({});
+    res.status(201).json(menuData);
+    
+  } catch (error) {
+    res.status(500).json({message: "internal server error!"})
+  }
+})
 
 app.get("/user/product", (req, res) => {});
 
