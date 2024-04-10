@@ -1,12 +1,14 @@
 const express = require("express");
 const Datastore = require("nedb-promise");
 const login = require("./login.js");
+const signup = require("./signup.js");
 
 //Init app
 const app = express();
 /*--------------Middleware--------------- */
 app.use(express.json());
-app.use("/auth", login)
+app.use("/", login)
+app.use("/", signup)
 /*--------------Variables--------------- */
 
 const PORT = 8000;
@@ -24,6 +26,8 @@ const aboutText = new Datastore({
   filename: "./model/about.db",
   autoload: true,
 });
+
+
 
 
 /*--------------GET--------------- */

@@ -13,6 +13,7 @@
     "express": "^4.19.2",
     "nedb": "^1.8.0",
     "nedb-promise": "^2.0.1",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "uuid": "^9.0.1"
   }
 }
