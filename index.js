@@ -11,7 +11,6 @@ app.use(express.json());
 const PORT = 8000;
 const URL = "127.0.0.1";
 const menuData = require("./model/menu.json");
-const userOrder = new Datastore({ filename: "userOrder.db", autoload: true });
 
 //init en ny databas
 const beansMenu = new Datastore({
@@ -47,21 +46,6 @@ app.get("/about", async (req, res) => {
   try {
     const aboutInformation = await aboutText.find({});
     res.status(201).json(aboutInformation);
-  } catch (error) {
-    res.status(500).json({ message: "internal server error!" });
-  }
-});
-
-app.get("/user/:id/order", (req, res) => {
-  const order = req.body;
-  res.status(201).json(order);
-});
-app.post("/user/:id/order", async (req, res) => {
-  const { price, title, id } = req.body;
-  const newOrder = { price, title, id };
-  try {
-    const allUserOrders = await userOrder.insert(newOrder);
-    res.status(201).json(allUserOrders);
   } catch (error) {
     res.status(500).json({ message: "internal server error!" });
   }
