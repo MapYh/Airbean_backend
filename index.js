@@ -1,11 +1,12 @@
 const express = require("express");
 const Datastore = require("nedb-promise");
+const login = require("./login.js");
 
 //Init app
 const app = express();
 /*--------------Middleware--------------- */
 app.use(express.json());
-
+app.use("/auth", login)
 /*--------------Variables--------------- */
 
 const PORT = 8000;
