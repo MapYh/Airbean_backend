@@ -23,6 +23,7 @@ login.get("/users", async (req, res) => {
     
 } );
 
+//Login handler
 login.post("/login", async (req, res) => {
     try {
         const {email, password} = req.body

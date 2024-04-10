@@ -25,6 +25,7 @@ const aboutText = new Datastore({
   autoload: true,
 });
 
+
 /*--------------GET--------------- */
 app.get("/", (req, res) => {
   res.status(200).json({ message: "testing" });
