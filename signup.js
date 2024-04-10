@@ -22,6 +22,11 @@ signup.post("/signup", async (req, res) => {
     const {email, password, name} = req.body;
     const newUser = {email, password, name};
     console.log(newUser)
+    //Validering. Kollar om några extra keys förutom dom bestämda smyger med
+    const validateBody = await Object.keys(req.body).filter(key => !["email", "password", "name"].includes(key))
+    if(validateBody.length > 0) {
+        return res.status(404).json({message: "body contained wrong values" })
+    }
 
     try {
         if(!newUser) {
