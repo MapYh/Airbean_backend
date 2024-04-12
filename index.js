@@ -7,8 +7,6 @@ const signup = require("./signup.js");
 const app = express();
 /*--------------Middleware--------------- */
 app.use(express.json());
-app.use("/auth", login) //för att komma åt använd http://127.0.0.1:8000/auth/"endpoint"
-app.use("/user", signup)//för att komma åt använd http://127.0.0.1:8000/user/"endpoint"
 /*--------------Variables--------------- */
 
 const PORT = 8000;
