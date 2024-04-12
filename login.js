@@ -5,7 +5,8 @@ const login = express();
 
 login.use(express.json());
 
-// const usersData = new Datastore({filename: "/model/users.db", autoload: true});
+const usersData = new Datastore({filename: "./model/users.db", autoload: true});
+
 const users = [
     {email: "horseman@hotmale.com", password: "horse", id: 2, orders: [], name: "Horse"},
     {email: "catman@hotmale.com", password: "cat", id: 3, orders: [], name: "Cat"},
@@ -15,7 +16,7 @@ const users = [
 
 login.get("/users", async (req, res) => {
     try {
-        //const users = await usersData.find({});
+        const users = await usersData.find({});
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ message: "internal server error!" });

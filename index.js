@@ -8,8 +8,8 @@ const order = require("./order.js");
 const app = express();
 /*--------------Middleware--------------- */
 app.use(express.json());
-app.use("/auth", login); //för att komma åt använd http://127.0.0.1:8000/auth/"endpoint"
-app.use("/user", signup); //för att komma åt använd http://127.0.0.1:8000/user/"endpoint"
+app.use("/api", login); //använd http://127.0.0.1:8000/api/"endpoint"
+app.use("/api", signup); //använd http://127.0.0.1:8000/api/"endpoint"
 app.use("/order", order); //för att komma åt använd http://127.0.0.1:8000/orders/"endpoint"
 /*--------------Variables--------------- */
 
