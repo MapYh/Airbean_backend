@@ -7,8 +7,8 @@ const signup = require("./signup.js");
 const app = express();
 /*--------------Middleware--------------- */
 app.use(express.json());
-app.use("/", login)
-app.use("/", signup)
+app.use("/api", login)
+app.use("/api", signup)
 /*--------------Variables--------------- */
 
 const PORT = 8000;
