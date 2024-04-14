@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
+    "express-validator": "^7.0.1",
     "nedb": "^1.8.0",
     "nedb-promise": "^2.0.1",
     "nodemon": "^3.1.0",

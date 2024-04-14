@@ -9,14 +9,13 @@ const usersData = Datastore({filename: "./model/users.db", autoload: true});
 
 
 login.get("/users", async (req, res) => {
-    try {
-        const users = await usersData.find({});
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(500).json({ message: "internal server error!" });
-    }
-    
-} );
+  try {
+    const users = await usersData.find({});
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: "internal server error!" });
+  }
+});
 
 //Login handler
 login.post("/login", async (req, res) => {
