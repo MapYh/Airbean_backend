@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 {"_id":"57d6ffff-5b92-41b4-8172-889ae57a9c29","email":"horseman@hotmale.com","password":"horsehorse","name":"Horseman","orders":[]}
 {"_id":"b529bcd9-6d0f-40bc-b12d-423ed8ad68ad","email":"dong@hotmale.com","password":"dongdong","name":"Dong","orders":[]}
-=======
-{"_id":"b529bcd9-6d0f-40bc-b12d-423ed8ad68ad","email":"dong@hotmale.com","password":"dongdong","name":"Dong","orders":[{"orderId":"b529bcd9-6d0f-40bc-b12d-423ed8ad68ad","orders":[{"id":1,"title":"Bryggkaffe","desc":"Bryggd på månadens bönor.","price":39},{"id":2,"title":"Caffè Doppio","desc":"Bryggd på månadens bönor.","price":49}]},{"orderId":"b529bcd9-6d0f-40bc-b12d-423ed8ad68ad","orders":[{"id":1,"title":"Bryggkaffe","desc":"Bryggd på månadens bönor.","price":39},{"id":2,"title":"Caffè Doppio","desc":"Bryggd på månadens bönor.","price":49}]},{"orderId":"b529bcd9-6d0f-40bc-b12d-423ed8ad68ad","orders":[{"id":1,"title":"Bryggkaffe","desc":"Bryggd på månadens bönor.","price":39},{"id":2,"title":"Caffè Doppio","desc":"Bryggd på månadens bönor.","price":49}]},{"orderId":"b529bcd9-6d0f-40bc-b12d-423ed8ad68ad","orders":[{"id":1,"title":"Bryggkaffe","desc":"Bryggd på månadens bönor.","price":39},{"id":2,"title":"Caffè Doppio","desc":"Bryggd på månadens bönor.","price":49}]}]}
->>>>>>> cbcba4cc4102cce2564408547dfc6e29ddbcfb7f
