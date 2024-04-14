@@ -1,7 +1,7 @@
 const express = require("express");
 const Datastore = require("nedb-promise");
 const { body, validationResult, checkSchema } = require("express-validator");
-const menu = require("./model/menu.json");
+const Menu = require("./model/menu.json");
 
 const order = express();
 order.use(express.json());
@@ -40,7 +40,6 @@ order.post(
         .status(404)
         .json({ message: "body contained wrong value types." });
     }
-
     const id = req.params.id;
     const { orderId, orders } = req.body;
     const newOrder = { orderId, orders };
@@ -54,16 +53,37 @@ order.post(
       return res.status(404).json({ message: "body contained wrong values" });
     }
 
-    ///----------------------------
-    //Kvar att implementera, kod som jämför så att alla keys har
-    //rätt värde enligt menu.json filen.
-    const foundUser = await userData.findOne({ _id: id });
-    try {
-      foundUser.orders.push(newOrder);
+    //Kontrollerar så att alla värden som skickas med i begäran, faktist finns att beställa i menyn.
 
-      userData.update({ _id: id }, { $set: { orders: foundUser.orders } });
-      orderData.insert(newOrder);
-      res.status(201).json("The order has been added to your user file.");
+    let resultFinal = [];
+    for (let i = 0; i < newOrder.orders.length; i++) {
+      for (let j = 0; j < Menu.menu.length; j++) {
+        const resultId = newOrder.orders[i].id == Menu.menu[j].id;
+        const resultTitle = newOrder.orders[i].title == Menu.menu[j].title;
+        const resultDesc = newOrder.orders[i].desc == Menu.menu[j].desc;
+        const resultPrice = newOrder.orders[i].price == Menu.menu[j].price;
+        console.log(resultId, resultTitle, resultDesc, resultPrice);
+        if (resultId && resultTitle && resultDesc && resultPrice) {
+          resultFinal.push(true);
+        }
+      }
+      console.log(resultFinal);
+      console.log("\n");
+    }
+
+    const foundUser = await userData.findOne({ _id: id });
+
+    try {
+      /* foundUser.orders.push(newOrder); */
+      if (resultFinal.length == newOrder.orders.length) {
+        userData.update({ _id: id }, { $set: { orders: foundUser.orders } });
+        orderData.insert(newOrder);
+        res.status(201).json("The order has been added to your user file.");
+      } else {
+        res
+          .status(500)
+          .json({ message: "Something is wrong with the request body!" });
+      }
     } catch (error) {
       res.status(500).json({ message: "internal server error!" });
     }
