@@ -66,8 +66,6 @@ order.post(
           resultFinal.push(true);
         }
       }
-
-      console.log("\n");
     }
 
     const foundUser = await userData.findOne({ _id: id });
