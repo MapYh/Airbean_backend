@@ -68,8 +68,10 @@ order.post(
       }
     }
 
+    //Letar efter en anvndare med id i begäran.
     const foundUser = await userData.findOne({ _id: id });
     try {
+      //Om  det finns en användare skriv in beställningen till den användaren.
       if (!(foundUser == null)) {
         foundUser.orders.push(newOrder);
         if (resultFinal.length == newOrder.orders.length) {
@@ -81,6 +83,7 @@ order.post(
             .status(500)
             .json({ message: "Something is wrong with the request body!" });
         }
+        //Om det inte finns en användare med det rätta id, skickas ett felmeddelande.
       } else {
         res.status(500).json({ message: "No user with that id!" });
       }
