@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { beansMenu } = require('./database.js'); 
+// const Menu = require("./model/menu.json");
 
-router.get('/', async (req, res) => {
+router.get('/products', async (req, res) => {
   try {
     const beans = await beansMenu.find({});
     res.status(201).json(beans); 

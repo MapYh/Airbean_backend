@@ -6,15 +6,6 @@ const signup = express();
 
 signup.use(express.json());
 
-signup.get("/testsign", (req, res) => {
-  res.status(200).json({ message: "Signup test!" });
-});
-
-signup.get("/testuser", async (req, res) => {
-  const user = await userData.find({});
-  res.status(200).json(user);
-});
-
 signup.post("/signup", async (req, res) => {
   const { email, password, name } = req.body;
   const newUser = { email, password, name };
