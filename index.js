@@ -1,5 +1,5 @@
 const express = require("express");
-const Datastore = require("nedb-promise");
+const {beansMenu, aboutText} = require("./database");
 const login = require("./login.js");
 const signup = require("./signup.js");
 const order = require("./order.js");
@@ -8,8 +8,8 @@ const order = require("./order.js");
 const app = express();
 /*--------------Middleware--------------- */
 app.use(express.json());
-app.use("/api", login); //använd http://127.0.0.1:8000/api/"endpoint"
-app.use("/api", signup); //använd http://127.0.0.1:8000/api/"endpoint"
+app.use("/auth", login); //använd http://127.0.0.1:8000/auth/"endpoint"
+app.use("/join", signup); //använd http://127.0.0.1:8000/join/"endpoint"
 app.use("/order", order); //för att komma åt använd http://127.0.0.1:8000/orders/"endpoint"
 /*--------------Variables--------------- */
 
@@ -18,16 +18,9 @@ const URL = "127.0.0.1";
 const menuData = require("./model/menu.json");
 
 //init en ny databas
-const beansMenu = new Datastore({
-  filename: "./model/menu.db",
-  autoload: true,
-});
 
-// data för about sidan.
-const aboutText = new Datastore({
-  filename: "./model/about.db",
-  autoload: true,
-});
+
+
 
 /*--------------GET--------------- */
 app.get("/", (req, res) => {

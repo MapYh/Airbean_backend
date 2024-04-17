@@ -1,20 +1,11 @@
 const express = require("express");
-const Datastore = require("nedb-promise");
+const {userData, orderData} = require("./database");
 const { body, validationResult } = require("express-validator");
 const Menu = require("./model/menu.json");
 
 const order = express();
 order.use(express.json());
 
-const orderData = new Datastore({
-  filename: "./model/orders.db",
-  autoload: true,
-});
-
-const userData = new Datastore({
-  filename: "./model/users.db",
-  autoload: true,
-});
 
 order.get("/orders", async (req, res) => {
   try {
