@@ -6,7 +6,7 @@ const signup = express();
 
 signup.use(express.json());
 
-/*  const usersData = new Datastore({filename: "./model/users.db", autoload: true}); */
+const usersData = new Datastore({filename: "./model/users.db", autoload: true});
 
 signup.get("/testsign", (req, res) => {
   res.status(200).json({ message: "Signup test!" });
