@@ -1,5 +1,5 @@
 const express = require("express");
-const {userData} = require("./database");
+const {userData, orderData} = require("./database");
 
 const login = express();
 
@@ -14,6 +14,15 @@ login.get("/users", async (req, res) => {
     res.status(500).json({ message: "internal server error!" });
   }
 });
+
+login.get("/myorders/:id", async (req, res) => {
+  const id = req.params.id;
+
+  const orders = await orderData.find({orderId: id});
+  console.log(orders.length)
+  res.status(201).json(orders)
+
+})
 
 //Login handler
 login.post("/login", async (req, res) => {
