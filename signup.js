@@ -1,19 +1,17 @@
 const express = require("express");
-const Datastore = require("nedb-promise");
+const {userData} = require("./database");
 const { v4: uuidv4 } = require("uuid");
 
 const signup = express();
 
 signup.use(express.json());
 
-const usersData = new Datastore({filename: "./model/users.db", autoload: true});
-
 signup.get("/testsign", (req, res) => {
   res.status(200).json({ message: "Signup test!" });
 });
 
 signup.get("/testuser", async (req, res) => {
-  const user = await usersData.find({});
+  const user = await userData.find({});
   res.status(200).json(user);
 });
 
@@ -33,7 +31,7 @@ signup.post("/signup", async (req, res) => {
     if (!newUser) {
       return res.status(404).json({ message: "something went wrong!" });
     } else {
-      const user = await usersData.insert({
+      const user = await userData.insert({
         _id: uuidv4(),
         ...newUser,
         orders: [],
