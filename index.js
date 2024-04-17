@@ -1,9 +1,9 @@
 const express = require("express");
-const {beansMenu, aboutText} = require("./database");
+const { beansMenu, aboutText } = require("./database.js");
 const login = require("./login.js");
 const signup = require("./signup.js");
 const order = require("./order.js");
-const about = require("./about.js")
+const about = require("./about.js");
 
 //Init app
 const app = express();
@@ -21,9 +21,6 @@ const menuData = require("./model/menu.json");
 
 //init en ny databas
 
-
-
-
 /*--------------GET--------------- */
 app.get("/", (req, res) => {
   res.status(200).json({ message: "testing" });
@@ -40,7 +37,6 @@ app.get("/beans", async (req, res) => {
 });
 
 app.get("/user/product", (req, res) => {});
-
 
 app.listen(PORT, URL, () => {
   console.log(`Server running on: ${URL}:${PORT}`);
