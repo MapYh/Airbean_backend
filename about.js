@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { aboutText } = require("./database.js"); // justera sökvägen efter behov
+const { aboutText } = require("./database.js");
 
 router.get("/", async (req, res) => {
   try {
